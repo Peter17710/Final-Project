@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <component inherit-compiler-output="true" inheritJdk="true">
 	<output-test url="file://$MODULE_DIR$/out/test/demo"/>
 	<exclude-output/>
 	<contentEntry url="file://$MODULE_DIR$"/>
 </component>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<component inherit-compiler-output="true" inheritJdk="true">
+	<output-test url="file://$MODULE_DIR$/out/test/demo"/>
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$"/>
+</component>
+>>>>>>> f39b32f (Initial commit)

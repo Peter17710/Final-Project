@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>loginTest.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+loginTest.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">saueclab</span><span class="s2">.</span><span class="s1">saucelab</span><span class="s2">.</span><span class="s1">loginTest</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">WebDriver</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">chrome</span><span class="s2">.</span><span class="s1">ChromeDriver</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">testng</span><span class="s2">.</span><span class="s1">annotations</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">saueclab</span><span class="s2">.</span><span class="s1">saucelab</span><span class="s2">.</span><span class="s1">pagefactory</span><span class="s2">.</span><span class="s1">loginPage</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">loginTest </span><span class="s2">{</span>
+    <span class="s1">WebDriver driver</span><span class="s2">;</span>
+    <span class="s1">loginPage login</span><span class="s2">;</span>
+
+    <span class="s1">@BeforeClass</span>
+    <span class="s0">public void </span><span class="s1">setUp</span><span class="s2">(){</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">setProperty</span><span class="s2">(</span><span class="s3">&quot;webdriver.chrome.driver&quot;</span><span class="s2">, </span><span class="s3">&quot;C://Users//Peter//Desktop//demo//saucelab//src//test//java//saueclab//saucelab//resources//chromedriver-win64//chromedriver.exe&quot;</span><span class="s2">) ;</span>
+        <span class="s1">driver </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ChromeDriver</span><span class="s2">();</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s3">&quot;https://www.saucedemo.com/v1/&quot;</span><span class="s2">);</span>
+        <span class="s1">login </span><span class="s2">= </span><span class="s0">new </span><span class="s1">loginPage</span><span class="s2">(</span><span class="s1">driver</span><span class="s2">);</span>
+    <span class="s2">}</span>
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">positiveLoginScenario</span><span class="s2">(){</span>
+        <span class="s1">login</span><span class="s2">.</span><span class="s1">typeUsername</span><span class="s2">(</span><span class="s3">&quot;standard_user&quot;</span><span class="s2">);</span>
+        <span class="s1">login</span><span class="s2">.</span><span class="s1">verifyUsername</span><span class="s2">(</span><span class="s3">&quot;standard_user&quot;</span><span class="s2">);</span>
+        <span class="s1">login</span><span class="s2">.</span><span class="s1">typePassword</span><span class="s2">(</span><span class="s3">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+        <span class="s1">login</span><span class="s2">.</span><span class="s1">verifyPassword</span><span class="s2">(</span><span class="s3">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+        <span class="s1">login</span><span class="s2">.</span><span class="s1">clickLoginBtn</span><span class="s2">();</span>
+        <span class="s1">login</span><span class="s2">.</span><span class="s1">verifyLogin</span><span class="s2">(</span><span class="s3">&quot;https://www.saucedemo.com/v1/inventory.html&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+    <span class="s1">@AfterClass</span>
+    <span class="s0">public void </span><span class="s1">terminate</span><span class="s2">(){</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">quit</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

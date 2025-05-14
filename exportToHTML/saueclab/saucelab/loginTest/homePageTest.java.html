@@ -1,0 +1,104 @@
+<html>
+<head>
+<title>homePageTest.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #2aacb8;}
+.s5 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+homePageTest.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">saueclab</span><span class="s2">.</span><span class="s1">saucelab</span><span class="s2">.</span><span class="s1">loginTest</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">WebDriver</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">chrome</span><span class="s2">.</span><span class="s1">ChromeDriver</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">support</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">ExpectedConditions</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">support</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">WebDriverWait</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">testng</span><span class="s2">.</span><span class="s1">annotations</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">saueclab</span><span class="s2">.</span><span class="s1">saucelab</span><span class="s2">.</span><span class="s1">pagefactory</span><span class="s2">.</span><span class="s1">homePage</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">saueclab</span><span class="s2">.</span><span class="s1">saucelab</span><span class="s2">.</span><span class="s1">pagefactory</span><span class="s2">.</span><span class="s1">loginPage</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">testng</span><span class="s2">.</span><span class="s1">Assert</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">time</span><span class="s2">.</span><span class="s1">Duration</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">homePageTest </span><span class="s2">{</span>
+
+    <span class="s0">private </span><span class="s1">WebDriver driver</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">loginPage login</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">homePage homePage</span><span class="s2">;</span>
+
+    <span class="s1">@BeforeClass</span>
+    <span class="s0">public void </span><span class="s1">setUp</span><span class="s2">() {</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">setProperty</span><span class="s2">(</span><span class="s3">&quot;webdriver.chrome.driver&quot;</span><span class="s2">,</span>
+                <span class="s3">&quot;C://Users//Peter//Desktop//demo//saucelab//src//test//java//saueclab//saucelab//resources//chromedriver-win64//chromedriver.exe&quot;</span><span class="s2">);</span>
+
+        <span class="s1">driver </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ChromeDriver</span><span class="s2">();</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">manage</span><span class="s2">().</span><span class="s1">window</span><span class="s2">().</span><span class="s1">maximize</span><span class="s2">();</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s3">&quot;https://www.saucedemo.com/&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">positiveAddToCartScenario</span><span class="s2">() {</span>
+        <span class="s1">login </span><span class="s2">= </span><span class="s0">new </span><span class="s1">loginPage</span><span class="s2">(</span><span class="s1">driver</span><span class="s2">);</span>
+        <span class="s1">login</span><span class="s2">.</span><span class="s1">typeUsername</span><span class="s2">(</span><span class="s3">&quot;standard_user&quot;</span><span class="s2">);</span>
+        <span class="s1">login</span><span class="s2">.</span><span class="s1">typePassword</span><span class="s2">(</span><span class="s3">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+        <span class="s1">login</span><span class="s2">.</span><span class="s1">clickLoginBtn</span><span class="s2">();</span>
+
+        <span class="s0">new </span><span class="s1">WebDriverWait</span><span class="s2">(</span><span class="s1">driver</span><span class="s2">, </span><span class="s1">Duration</span><span class="s2">.</span><span class="s1">ofSeconds</span><span class="s2">(</span><span class="s4">40</span><span class="s2">))</span>
+                <span class="s2">.</span><span class="s1">until</span><span class="s2">(</span><span class="s1">ExpectedConditions</span><span class="s2">.</span><span class="s1">visibilityOfElementLocated</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">className</span><span class="s2">(</span><span class="s3">&quot;shopping_cart_link&quot;</span><span class="s2">)));</span>
+
+        <span class="s1">String currentUrl </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">getCurrentUrl</span><span class="s2">();</span>
+        <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertTrue</span><span class="s2">(</span><span class="s1">currentUrl</span><span class="s2">.</span><span class="s1">contains</span><span class="s2">(</span><span class="s3">&quot;/inventory.html&quot;</span><span class="s2">),</span>
+                <span class="s3">&quot;Login failed or incorrect URL. Actual: &quot; </span><span class="s2">+ </span><span class="s1">currentUrl</span><span class="s2">);</span>
+
+        <span class="s1">homePage </span><span class="s2">= </span><span class="s0">new </span><span class="s1">homePage</span><span class="s2">(</span><span class="s1">driver</span><span class="s2">);</span>
+
+        <span class="s1">homePage</span><span class="s2">.</span><span class="s1">clickAddToCartBtn</span><span class="s2">();</span>
+        <span class="s1">homePage</span><span class="s2">.</span><span class="s1">clickCartLnk</span><span class="s2">();</span>
+
+        <span class="s1">String cartUrl </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">getCurrentUrl</span><span class="s2">();</span>
+        <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertTrue</span><span class="s2">(</span><span class="s1">cartUrl</span><span class="s2">.</span><span class="s1">contains</span><span class="s2">(</span><span class="s3">&quot;/cart.html&quot;</span><span class="s2">),</span>
+                <span class="s3">&quot;Navigation to cart failed. Actual: &quot; </span><span class="s2">+ </span><span class="s1">cartUrl</span><span class="s2">);</span>
+
+        <span class="s1">String cartItemText </span><span class="s2">= </span><span class="s1">homePage</span><span class="s2">.</span><span class="s1">getCartItemText</span><span class="s2">();</span>
+        <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertTrue</span><span class="s2">(</span><span class="s1">cartItemText</span><span class="s2">.</span><span class="s1">contains</span><span class="s2">(</span><span class="s3">&quot;Sauce Labs Backpack&quot;</span><span class="s2">),</span>
+                <span class="s3">&quot;The item was not added to the cart. Actual cart item: &quot; </span><span class="s2">+ </span><span class="s1">cartItemText</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">removeItemFromCart</span><span class="s2">() {</span>
+        <span class="s1">homePage</span><span class="s2">.</span><span class="s1">clickHomeLink</span><span class="s2">();</span>
+
+        <span class="s0">new </span><span class="s1">WebDriverWait</span><span class="s2">(</span><span class="s1">driver</span><span class="s2">, </span><span class="s1">Duration</span><span class="s2">.</span><span class="s1">ofSeconds</span><span class="s2">(</span><span class="s4">10</span><span class="s2">))</span>
+                <span class="s2">.</span><span class="s1">until</span><span class="s2">(</span><span class="s1">ExpectedConditions</span><span class="s2">.</span><span class="s1">visibilityOfElementLocated</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s3">&quot;remove-sauce-labs-backpack&quot;</span><span class="s2">)));</span>
+
+        <span class="s1">homePage</span><span class="s2">.</span><span class="s1">clickRemoveBtn</span><span class="s2">();</span>
+
+        <span class="s0">new </span><span class="s1">WebDriverWait</span><span class="s2">(</span><span class="s1">driver</span><span class="s2">, </span><span class="s1">Duration</span><span class="s2">.</span><span class="s1">ofSeconds</span><span class="s2">(</span><span class="s4">10</span><span class="s2">))</span>
+                <span class="s2">.</span><span class="s1">until</span><span class="s2">(</span><span class="s1">ExpectedConditions</span><span class="s2">.</span><span class="s1">invisibilityOfElementLocated</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s3">&quot;remove-sauce-labs-backpack&quot;</span><span class="s2">)));</span>
+
+        <span class="s1">homePage</span><span class="s2">.</span><span class="s1">clickCartLnk</span><span class="s2">();</span>
+
+
+        <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertTrue</span><span class="s2">(</span><span class="s1">homePage</span><span class="s2">.</span><span class="s1">isCartEmpty</span><span class="s2">(), </span><span class="s3">&quot;Item was not removed from the cart.&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@AfterClass</span>
+    <span class="s0">public void </span><span class="s1">tearDown</span><span class="s2">() {</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">driver </span><span class="s2">!= </span><span class="s0">null</span><span class="s2">) {</span>
+<span class="s5">//            driver.quit();</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
